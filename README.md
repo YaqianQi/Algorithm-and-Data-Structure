@@ -1,2 +1,2 @@
-# Leetcode
-Algorithm and Data Structure
+# Algorithm and Data Structure
+Leetcode and Some practice
