@@ -1,5 +1,5 @@
 import java.util.*;
-public classv_71_simplifyPath {
+public class _71_simplifyPath {
 	
 	public String simplifyPathMethod(String path) {
 		Stack<String> stack = new Stack<>();
