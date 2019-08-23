@@ -10,8 +10,11 @@ public class _225_ImplementStackUsingQueue {
 	    /** Push element x onto stack. */
 	    public void push(int x) {
 	        queue.add(x);
-	        queue.add(queue.poll());
+	        for (int i = 0; i < queue.size()-1; i++) {
+	        	queue.add(queue.poll());
+	        }
 	    }
+	    
 	    
 	    /** Removes the element on top of the stack and returns that element. */
 	    public int pop() {
