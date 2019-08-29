@@ -22,6 +22,7 @@ public class _60_PermutationSequence {
 		
 		StringBuilder sb = new StringBuilder();
 		for(int i = n; i > 0;i--) {
+			System.out.println(fact[i-1]);
 			int  index = k / fact[i-1];
 			k = k % fact[i-1];
 			sb.append(res.get(index));
