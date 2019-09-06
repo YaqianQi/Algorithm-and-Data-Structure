@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class _130_SurroundedRegions {
 	
 	// check boundary first and then change the O inside 
-	// bfs,dfs can both work 
+	// bfs,dfs can both work o
 	public char[][] solve(char[][] board) {
 		if (board == null || board.length == 0|| board[0].length == 0) return board;
 		int m = board.length-1; 
