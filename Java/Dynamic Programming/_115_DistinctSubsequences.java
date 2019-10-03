@@ -1,8 +1,8 @@
 
 public class _115_DistinctSubsequences {
 	/*s->T  S
-	 *  T 	Ø r a b b b i t
-			Ø 1 1 1 1 1 1 1 1
+	 *  	T 	Ã˜ r a b b b i t
+			Ã˜ 1 1 1 1 1 1 1 1
 			r 0 1 1 1 1 1 1 1
 			a 0 0 1 1 1 1 1 1
 			b 0 0 0 1 2 3 3 3
@@ -19,9 +19,9 @@ public class _115_DistinctSubsequences {
 		for (int j = 0; j <= m; j++) dp[0][j] = 1;
 		
 		for (int i = 1; i <= n; ++i) {
-            for (int j = 1; j <= m; ++j) {
+            		for (int j = 1; j <= m; ++j) {
              
-                dp[i][j] = dp[i][j - 1] + (t.charAt(i-1) == s.charAt(j-1) ? dp[i - 1][j - 1] : 0);
+                		dp[i][j] = dp[i][j - 1] + (t.charAt(i-1) == s.charAt(j-1) ? dp[i - 1][j - 1] : 0);
             }
         }
 		 return dp[n][m];
