@@ -16,9 +16,9 @@ public class _295_FindMedianfromDataStream {
 	    
 	    public double findMedian() {
 	        if(minHeap.size()>maxHeap.size()) {
-	        	return minHeap.poll();
+	        	return minHeap.peek();
 	        }else {
-	        	return 1/2 * (minHeap.poll()+ maxHeap.poll());
+	        	return 1/2 * (minHeap.peek()+ maxHeap.peek());
 	        }
 	    }
 	public static void main(String[] args) {
