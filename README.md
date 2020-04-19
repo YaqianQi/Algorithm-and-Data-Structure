@@ -1,4 +1,4 @@
 # Algorithm and Data Structure
-## Leetcode and Some practices
+## Leetcode Practices and Contest 
 - Python 
 - Java 
