@@ -5,6 +5,8 @@ class Solution:
         :rtype: bool
         """
         n = len(nums) 
+        if n < 3:
+            return False
         left_min = [0] * n
         left_min[0] = float("inf")
         stack = []
