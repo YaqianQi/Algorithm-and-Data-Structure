@@ -12,11 +12,22 @@ class Solution:
             else:
                 res.append(n)
             memo[n]+=1
-        print(memo)
         return res
 
 
 if __name__== "__main__":
+    # Input: 
+    names = ["kaido","kaido(1)","kaido","kaido(1)"]
+    # kaido -> kaido
+    # kaido(1) - > kaido(1)
+    # kaido -> kaido(1)-> kaido(2)
+    # kaido(1)(1) - > kaido(1)(1)
+
+    # memo = {"kaido":1, "kaido(1)":1} res = [kaido, kaido(1)]
+    # cur kaido(1), res = [kaido, kaido(1), kaido(2)]
+    # kaido(1)(1) res = [kaido, kaido(1), kaido(2), kaido(1)(1)]
+    sol = Solution()
+    print(sol.getFolderNames(names))
    
     # Input: 
     names = ["pes","fifa","gta","pes(2019)"]
@@ -32,6 +43,8 @@ if __name__== "__main__":
 
     # Input: 
     names = ["onepiece","onepiece(1)","onepiece(2)","onepiece(3)","onepiece"]
+    # memo = {"onepiece":4, "onepiece(1)": 1, "onepiece(2)":1, "onepiece(3)":1 } res =["onepiece", "onepiece(1)", "onepiece(2)", "onepiece(3)" ]
+    # onepiece -> onepiece(1) - > onepiece(2)- > onepiece(3)- > onepiece(4)
     # Output: ["onepiece","onepiece(1)","onepiece(2)","onepiece(3)","onepiece(4)"]
     sol = Solution()
     print(sol.getFolderNames(names))
