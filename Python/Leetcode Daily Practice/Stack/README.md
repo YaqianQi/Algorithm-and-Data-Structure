@@ -2,7 +2,9 @@
 - [x] 1499. Max Value of Equation
 - [ ] 1425. Constrained Subsequence Sum
 - [ ] 1130. Minimum Cost Tree From Leaf Values
-- [x] 907.Sum of Subarray Minimums
+- [x] 907. Sum of Subarray Minimums 
+- - [ ] 828. Unique Letter String
+- - [ ] 891. Sum of Subsequence Widths
 - [x] 901. Online Stock Span
 - [x] 856. Score of Parentheses
 - [x] 503. Next Greater Element II
