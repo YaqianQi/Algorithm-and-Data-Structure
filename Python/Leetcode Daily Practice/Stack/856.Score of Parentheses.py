@@ -9,9 +9,10 @@ class Solution(object):
             else:
                 v = stack.pop()
                 stack[-1] += max(2 * v, 1)
-            print(stack)
         return stack.pop()
-
+ # s = "(()(()))"
+ #             
+ #      
     def scoreOfParentheses(self, S):
         """
         :type S: str
@@ -38,7 +39,9 @@ class Solution(object):
         while stack:
             res += stack.pop()
         return res
-                    
+ # s = "(()(()))"
+ #             
+ #                           
                 
 
 
@@ -63,7 +66,7 @@ if __name__ == "__main__":
     print(sol.scoreOfParentheses(s))
 
     # Input: 
-    s = "(()(()))" # (1 + 2) * 2 stack = (1
+    s = "(()(()))" 
     # Output: 6
     sol = Solution()
     print(sol.scoreOfParentheses2(s))
