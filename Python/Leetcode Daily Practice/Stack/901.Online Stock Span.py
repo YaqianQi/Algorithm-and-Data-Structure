@@ -11,6 +11,7 @@ class StockSpanner(object):
         while self.stack and self.stack[-1][0] <= price:
             w += self.stack.pop()[1]
         self.stack.append((price, w))
+        print(self.stack)
         return w
         
 
@@ -28,6 +29,7 @@ if __name__ == "__main__":
     # S.next(60) is called and returns 1, 
     # S.next(75) is called and returns 4, 
     # S.next(85) is called and returns 6. 
+
 
     # Note that (for example) S.next(75) returned 4, because the last 4 prices
     # (including today's price of 75) were less than or equal to today's price.
