@@ -17,9 +17,12 @@ class Solution(object):
         return max_val
 
     def findMaxValueOfEquation(self, points, k):
-        # stack 
+        # deque/stack 
+        # Time O(N)
+        # Space O(N)
+        # time o(n), space: o(n)
         # stack #|xi - xj| <= k
-        # xi < xj , yi + yj + |xi - xj| = yi + yj + xj - xi => find the max(xj - xi)
+        # xi < xj , yi + yj + |xi - xj| = yi + yj + xj - xi =  xj + yj +yi - xi => find the max(yi-xi)
         from collections import deque
         deque = deque()
         res = -float("inf")
@@ -27,14 +30,16 @@ class Solution(object):
             while deque and k < x - deque[0][1]:
                 deque.popleft()
             if deque:
-                res = max(res, deque[0][0] + x + y)
-            while deque and deque[-1][0] <= y-x:
+                res = max(res, deque[0][0] + x + y) # 
+            while deque and deque[-1][0] <= y-x: # yj - xj >= yi - xi
                 deque.pop()
-            deque.append([y-x, x])
+            deque.append([y-x, x]) 
 
         return res
     def findMaxValueOfEquation(self, points, k):
         # priority queue 
+        # Time O(NlogN) 
+        # Space O(N)
         # stack #|xi - xj| <= k
         # xi < xj , yi + yj + |xi - xj| = yi + yj + xj - xi => find the max(xj - xi)
         import heapq
@@ -46,7 +51,7 @@ class Solution(object):
                 heapq.heappop(h)
             if h: 
                 res = max(res, x+y-h[0][0])
-            heapq.heappush(h, (-y + x, x))
+            heapq.heappush(h, (-y + x, x)) # we want deque in desc order -3, -2, -1 
         return res
 
 if __name__ == "__main__":

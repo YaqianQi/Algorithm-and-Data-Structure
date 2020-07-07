@@ -1,7 +1,7 @@
 # Stack Problem 
 - [x] 1499. Max Value of Equation
-- [ ] 1425. Constrained Subsequence Sum
-- [ ] 1130. Minimum Cost Tree From Leaf Values
+- [x] 1425. Constrained Subsequence Sum
+- [x] 1130. Minimum Cost Tree From Leaf Values
 - [x] 907. Sum of Subarray Minimums 
 - - [ ] 828. Unique Letter String
 - - [ ] 891. Sum of Subsequence Widths
