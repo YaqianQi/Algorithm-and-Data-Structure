@@ -10,18 +10,15 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        res = -float("inf")
-        from collections import deque
-        t = deque()
-        for i in range(len(nums)):
-            if self.is_harmounious(t+nums[i]): 
-                t.append(nums[i])
-            while len(t) > 2 and not self.is_harmounious(t):
-                t.popleft()
-            res = max(res, len(t))
+        from collections import defaultdict
+        res = 0
+        d = defaultdict(int)
+        for num in nums:
+            d[num] += 1
+        for key in d.keys():
+            if key + 1 in d:
+                res = max(res,d[key] + d[key+1])
         return res
-    def is_harmounious(self, lst):
-        return max(lst) - min(lst) == 1
 if __name__ == "__main__":
     # Input: 
     nums = [1,3,2,2,5,2,3,7]
