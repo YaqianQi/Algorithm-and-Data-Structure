@@ -1,4 +1,5 @@
 # Algorithm and Data Structure by Topic 
-## Leetcode Practices and Contest
+## Leetcode
 - Python 
 - Java 
+- SQL 
