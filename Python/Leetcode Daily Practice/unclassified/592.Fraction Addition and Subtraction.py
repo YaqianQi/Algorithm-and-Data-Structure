@@ -54,3 +54,7 @@ if __name__ == "__main__":
     sol = Solution()
     print(sol.fractionAddition(s))
     print(sol.fractionAddition2(s))
+    # a    c
+    # - *  -
+    # b    d
+    #( a * d + b * c)/(b* d)
