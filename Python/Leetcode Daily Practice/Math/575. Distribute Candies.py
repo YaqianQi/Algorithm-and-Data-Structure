@@ -26,7 +26,6 @@ class Solution(object):
         :type candies: List[int]
         :rtype: int
         """
-        from collections import Counter
         n = len(candies)/2
         kind = len(set(candies))
         return min(kind, n)
