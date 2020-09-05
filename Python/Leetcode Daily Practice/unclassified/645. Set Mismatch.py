@@ -26,4 +26,9 @@ class Solution(object):
                 res.append(val+1)
         return res 
 num = [1,2,2,4]
+"""
+2: 10
+3: 11 
+"""
+print(1&1)
 print(Solution().findErrorNums(num))
