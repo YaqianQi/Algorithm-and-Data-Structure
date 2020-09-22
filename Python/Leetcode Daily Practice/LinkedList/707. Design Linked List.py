@@ -12,12 +12,19 @@ void addAtTail(int val) Append a node of value val as the last element of the li
 void addAtIndex(int index, int val) Add a node of value val before the indexth node in the linked list. If index equals the length of the linked list, the node will be appended to the end of the linked list. If index is greater than the length, the node will not be inserted.
 void deleteAtIndex(int index) Delete the indexth node in the linked list, if the index is valid.
 """
+class ListNode:
+    def __init__(self, val):
+        self.val = val 
+        self.next = None
+    
 class MyLinkedList(object):
     
     def __init__(self):
         """
         Initialize your data structure here.
         """
+        self.size = 0 
+        self.head = ListNode(0)
         
 
     def get(self, index):
@@ -26,6 +33,10 @@ class MyLinkedList(object):
         :type index: int
         :rtype: int
         """
+        node = self.head
+        for i in range(index + 1):
+            node = node.next 
+        return node.val 
         
 
     def addAtHead(self, val):
@@ -34,7 +45,7 @@ class MyLinkedList(object):
         :type val: int
         :rtype: None
         """
-        
+        self.addAtIndex(0, val)
 
     def addAtTail(self, val):
         """
@@ -42,7 +53,7 @@ class MyLinkedList(object):
         :type val: int
         :rtype: None
         """
-        
+        self.addAtIndex(self.size, val)
 
     def addAtIndex(self, index, val):
         """
@@ -51,7 +62,21 @@ class MyLinkedList(object):
         :type val: int
         :rtype: None
         """
+        if index < 0 or index > self.size:
+            return 
         
+        self.size += 1
+        node = self.head
+        
+        for _ in range(index):
+            node = node.next
+        
+        add_node = ListNode(val)
+        add_node.next = node.next
+        node.next = add_node
+
+
+            
 
     def deleteAtIndex(self, index):
         """
@@ -59,4 +84,13 @@ class MyLinkedList(object):
         :type index: int
         :rtype: None
         """
+        if index < 0 or index > self.size:
+            return 
         
+        self.size -= 1
+        node = self.head
+        
+        for _ in range(index):
+            node = node.next 
+        
+        node.next = node.next.next
