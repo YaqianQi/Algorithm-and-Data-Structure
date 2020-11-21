@@ -2,16 +2,58 @@
 
 1. Tree traversal recursive 
 
-   - Pre-order 
+   - Pre-order: stack, (right, left) 
 
    - In-order 
-   - post-order
+   - post-order: stack, (left, right, reverse)
 
 2. Iterative Traversal 
 
 ------------------------------
 
 # Question Classification
+
+## Classic Question 
+
+### Reverse Binary Tree
+
+#### 226. Invert Binary Tree
+
+```python
+class Solution:
+      def invertTree(self, root: TreeNode) -> TreeNode:
+        if not root: 
+            return 
+
+        root.left, root.right = root.right, root.left 
+
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+        return root
+
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        queue = collections.deque([(root)])
+        while queue:
+            node = queue.popleft()
+            if node:
+                node.left, node.right = node.right, node.left
+                queue.append(node.left)
+                queue.append(node.right)
+        return root 
+
+        
+    # DFS
+    def invertTree(self, root):
+        stack = [root]
+        while stack:
+            node = stack.pop()
+            if node:
+                node.left, node.right = node.right, node.left
+                stack.extend([node.right, node.left])
+        return root
+```
+
+
 
 ## Pre order traversal
 
@@ -58,11 +100,10 @@ class Solution(object):
         
         while stack:
             root = stack.pop()
-        
             output.append(root.val)
-            if root.right is not None:
+            if root.right:
                 stack.append(root.right)
-            if root.left is not None:
+            if root.left:
                 stack.append(root.left)
         
         return output
@@ -253,23 +294,18 @@ def inorder(root):
 ####  Iterating method using Stack
 
 ```java
-public class Solution {
-    public List < Integer > inorderTraversal(TreeNode root) {
-        List < Integer > res = new ArrayList < > ();
-        Stack < TreeNode > stack = new Stack < > ();
-        TreeNode curr = root;
-        while (curr != null || !stack.isEmpty()) {
-            while (curr != null) {
-                stack.push(curr);
-                curr = curr.left;
-            }
-            curr = stack.pop();
-            res.add(curr.val);
-            curr = curr.right;
-        }
-        return res;
-    }
-}
+class Solution(object):
+    def inorderTraversal(self, root):
+        stack, res = [], []
+        cur = root 
+        while cur or stack:
+            while cur:
+                stack.append(cur)
+                cur = cur.left
+            cur = stack.pop()
+            res.append(cur.val)
+            cur = cur.right
+        return res
 ```
 
 - Successor = "after node", i.e. the next node, or the smallest node *after* the current one.
@@ -292,13 +328,15 @@ def predecessor(root):
     return root
 ```
 
-![precessor and succesor](/Users/aliciaqi/Documents/Leetcode Template/pics/precessor and succesor.png)
+![precessor and succesor](pics/precessor and succesor.png)
+
+
 
 
 
 ### Question Classification
 
-#### 450. Delete Node in a BST![find successor](/Users/aliciaqi/Documents/Leetcode Template/pics/find successor.png)
+#### 450. Delete Node in a BST![find successor](pics/find successor.png)
 
 
 
@@ -458,6 +496,52 @@ Class Solution(object):
 
 - Time Complexity: *O*(*N*), where N*N* is the total number of nodes in the given tree. We visit each node at most once.
 - Space Complexity: *O*(*N*). The depth-first search may store up to *O*(*h*)=*O*(*N*) information in the call stack, where h*h* is the height of the tree.
+
+##### 114. Flatten Binary Tree to Linked List
+
+```python
+class Solution(object):
+    def flatten(self, root):
+
+        def dfs(root):
+            if not root:
+                return None
+            if not root.left and not root.right:
+                return root
+            l = dfs(root.left)
+            r = dfs(root.right)
+            if l:
+                l.right = root.right
+                root.right = root.left 
+                root.left = None
+            return r if r else l 
+        return dfs(root)
+```
+
+- Time Complexity: *O*(*N*) since we process each node of the tree exactly once.
+- Space Complexity: *O*(*N*) which is occupied by the recursion stack. The problem statement doesn't mention anything about the tree being balanced or not and hence, the tree could be e.g. left skewed and in that case the longest branch (and hence the number of nodes in the recursion stack) would be *N*
+
+##### 124. Binary Tree Maximum Path Sum
+
+```python
+class Solution:
+    def maxPathSum(self, root: TreeNode) -> int:
+        def dfs(root):
+            nonlocal max_sum
+            if not root:
+                return 0
+            
+            l = max(dfs(root.left),0)
+            r = max(dfs(root.right),0) 
+            new_path = root.val + l + r
+            max_sum = max(max_sum, new_path)
+            return root.val + max(l, r )
+        max_sum = float("-inf")
+        dfs(root)
+        return max_sum
+```
+
+
 
 ## Level Order Traversal 
 

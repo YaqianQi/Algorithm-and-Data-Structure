@@ -131,3 +131,4 @@ class Solution(object):
         return curString
 ```
 
+### 32. Longest Valid Parentheses

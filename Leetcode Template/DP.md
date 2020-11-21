@@ -2,6 +2,10 @@
 
 ## 1. Introduction
 
+<img src="pics/dp_decision_process.png">
+
+
+
 ### Dynamic Programming Methods
 
 #### 1. Top-down with Memoization
