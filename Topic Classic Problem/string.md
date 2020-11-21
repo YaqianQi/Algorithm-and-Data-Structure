@@ -73,7 +73,11 @@ class Solution(object):
         return res
 ```
 
-Similar Quesiton: 904. Fruit Into Baskets
+Similar Quesiton: 
+
+1- 904. Fruit Into Baskets
+
+2-3. Longest Substring Without Repeating Characters
 
 ## string manipulation
 
