@@ -1,6 +1,135 @@
 # Array
 
-## 1. 2D Array
+## 1D Array
+
+### 253. Meeting Rooms II
+
+- Heap 
+
+```python
+class Solution(object):
+    def minMeetingRooms(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: int
+        [[0, 30],[5, 10],[15, 20]]
+          s   e
+         end time > start time
+         o(nlogn)
+        """
+        from heapq import heappush, heappop
+        intervals.sort()
+        rooms = []
+        for i in intervals:
+            if rooms and rooms[0] <= i[0]:
+                heappop(rooms)
+                
+            heappush(rooms, i[1])
+        print(rooms)
+        return len(rooms)
+```
+
+- 扫描线
+
+<img src="pics/253.1.png" width="500"/>
+
+<img src="pics/253.2.png" width="500"/>
+
+
+
+```python
+class Solution(object):
+    def minMeetingRooms(self, intervals):
+        # If there are no meetings, we don't need any rooms.
+        # O(NlogN)
+        if not intervals:
+            return 0
+
+        used_rooms = 0
+        start_timings = sorted([i[0] for i in intervals])
+        end_timings = sorted(i[1] for i in intervals)
+        L = len(intervals)
+
+        end_pointer = 0
+        start_pointer = 0
+
+        while start_pointer < L:
+
+            if start_timings[start_pointer] >= end_timings[end_pointer]:
+                used_rooms -= 1
+                end_pointer += 1
+                
+            used_rooms += 1    
+            start_pointer += 1   
+
+        return used_rooms
+```
+
+### 42. Trapping Rain Water
+
+- current = min(left, right) - cur_height 
+
+```python
+class Solution(object):
+    def trap(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        
+        [0,1,0,2,1,0,1,3,2,1,2,1]
+        """
+        if not height: return 0
+        size = len(height)
+        area = 0
+        left_max, right_max = [0] * size, [0] * size
+        
+        left_max[0] = height[0]
+        for i in range(1, size):
+            left_max[i] = max(height[i], left_max[i - 1])
+            
+        right_max[size - 1] = height[size - 1]
+        for i in range(size-2, -1, -1):
+            right_max[i] = max(height[i], right_max[i + 1])
+        
+        for i in range(1, size-1):
+            area = area + (min(left_max[i], right_max[i]) - height[i])
+        return area
+```
+
+### 844. Backspace String Compare
+
+```python
+class Solution(object):
+    def backspaceCompare(self, S, T):
+        def build(S):
+            ans = []
+            for c in S:
+                if c != '#':
+                    ans.append(c)
+                elif ans:
+                    ans.pop()
+            return "".join(ans)
+        return build(S) == build(T)
+      
+      
+class Solution(object):
+    def backspaceCompare(self, S, T):
+        def F(S):
+            skip = 0
+            for x in reversed(S):
+                if x == '#':
+                    skip += 1
+                elif skip:
+                    skip -= 1
+                else:
+                    yield x
+
+        return all(x == y for x, y in itertools.izip_longest(F(S), F(T)))
+```
+
+
+
+## 2D Array
 
 ### 498. Diagonal Traverse
 
@@ -96,6 +225,8 @@ class Solution:
 ### 1424. Diagonal Traverse II
 
 <img src="pics/1424.png" width="500"/>
+
+
 
 ```python
 class Solution:

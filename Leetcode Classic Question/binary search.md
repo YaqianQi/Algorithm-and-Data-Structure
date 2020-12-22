@@ -76,3 +76,40 @@ class Solution(object):
         
 ```
 
+## Binary Search Other Application #
+
+### 410. Split Array Largest Sum
+
+```python
+class Solution:
+    def splitArray(self, nums: List[int], m: int) -> int:
+        left = 1
+        right = sum(nums)
+        
+        while left < right:
+            mid = (left+right)//2
+            if self.canSplit(nums, m, mid):
+                right = mid
+            else:
+                left = mid + 1
+            
+        return left
+    
+    def canSplit(self, nums, m, maxSize):
+        bucket = 0
+        curr_sum = 0        
+        for num in nums:
+            if num > maxSize:
+                return False
+            if curr_sum + num > maxSize:
+                bucket += 1
+                curr_sum = num
+            else:
+                curr_sum += num
+                
+        if curr_sum > 0:
+            bucket += 1
+                
+        return bucket <= m
+```
+
