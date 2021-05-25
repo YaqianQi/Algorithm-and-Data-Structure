@@ -1,6 +1,4 @@
-## 1428. Leftmost Column with at Least a One
-
-
+## Problems Lists 
 - 1283. Find the Smallest Divisor Given a Threshold
 - 34. Find First and Last Position of Element in Sorted Array
 - 410. Split Array Largest Sum
@@ -13,6 +11,10 @@
 - 1482. Minimum Number of Days to Make m Bouquets
 - 1539. Kth Missing Positive Number
 
+-----------------------------------------------------------
+
+
+## 1428. Leftmost Column with at Least a One
 
 ```python
 class Solution(object):
