@@ -45,3 +45,22 @@ class Solution:
         return "".join(output[::-1])
 ```
 
+### 690. Employee Importance
+
+```python
+class Solution(object):
+    def getImportance(self, employees, id):
+        """
+        :type employees: List[Employee]
+        :type id: int
+        :rtype: int
+        """
+        emap = {e.id: e for e in employees}
+        def dfs(eid):
+            employee = emap[eid]
+            return (employee.importance +
+                    sum(dfs(eid) for eid in employee.subordinates))
+        return dfs(id)
+        
+```
+

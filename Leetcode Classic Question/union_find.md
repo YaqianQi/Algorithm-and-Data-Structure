@@ -1,6 +1,6 @@
 # Union Find
 
-## Template
+## ![Screen Shot 2020-12-21 at 9.56.29 PM](/Users/aliciaqi/Desktop/Screen Shot 2020-12-21 at 9.56.29 PM.png)Template
 
 ```python
 import collections

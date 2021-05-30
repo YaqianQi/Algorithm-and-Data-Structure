@@ -1,10 +1,19 @@
 # Stack 
+- stack good question 
+1673. Find the Most Competitive Subsequence
+1425. Constrained Subsequence Sum
+1130. Minimum Cost Tree From Leaf Values
+907. Sum of Subarray Minimums
+901. Online Stock Span
+856. Score of Parentheses
+503. Next Greater Element II
+496. Next Greater Element I
+84. Largest Rectangle in Histogram
+42. Trapping Rain Water
 
-## Stack Basic 
+## 155. Min Stack 
 
-### 155. Min Stack 
-
-#### Method1: Pair Value 
+- Method1: Pair Value 
 
 ```python
 # pair value 
@@ -67,7 +76,7 @@ class MinStack(object):
 
   Worst case is that all the operations are `push`. In this case, there will be O(2 * n) = O(n)*O*(2⋅*n*)=*O*(*n*) space used.
 
-#### Method2 : Two Stack 
+-  Method2 : Two Stack 
 
 ```python
 class MinStack:
@@ -131,11 +140,11 @@ class Solution(object):
         return curString
 ```
 
-### 32. Longest Valid Parentheses
+## 32. Longest Valid Parentheses
 
 
 
-### 844. Backspace String Compare
+## 844. Backspace String Compare
 
 method 1: python trick itertools 
 

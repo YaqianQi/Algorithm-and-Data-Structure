@@ -18,6 +18,27 @@ from collections import defaultdict
         return res
 ```
 
+## similar 
+
+```python
+class Solution(object):
+    def isNStraightHand(self, hand, W):
+        count = collections.Counter(hand)
+        while count:
+            m = min(count)
+            for k in xrange(m, m+W):
+                v = count[k]
+                if not v: return False
+                if v == 1:
+                    del count[k]
+                else:
+                    count[k] = v - 1
+
+        return True
+```
+
+
+
 ### 11. Container With Most Water
 
 ```python
