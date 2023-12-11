@@ -52,25 +52,49 @@ Space: O(1)
 ### Quick Sort
 
 ```python
-def partition(arr, l, r):
-    i, pivot = l-1 , arr[r]
-    for j in range(l, r):
-        if arr[j] <= pivot:
-            i += 1
-            arr[i], arr[j] = arr[j], arr[i]
-    arr[i+1], arr[r] = arr[r], arr[i+1]
-    return i+1
-
-def quick_sort(arr, l, r):
-    if l >= r:
-        return 
-    p = partition(arr, l, r)
-    quick_sort(arr, l, p - 1)
-    quick_sort(arr, p + 1, r)
-
-def quicksort(array):    
-    quick_sort(array, 0, len(arr)-1)
-    return array
+def partition(array, low, high):
+ 
+    # Choose the rightmost element as pivot
+    pivot = array[high]
+ 
+    # Pointer for greater element
+    i = low
+ 
+    # Traverse through all elements
+    # compare each element with pivot
+    for j in range(low, high):
+        if array[j] <= pivot:
+ 
+            # If element smaller than pivot is found
+            # swap it with the greater element pointed by i
+            
+            # Swapping element at i with element at j
+            (array[i], array[j]) = (array[j], array[i])
+            i = i + 1
+ 
+    # Swap the pivot element with
+    # the greater element specified by i
+    (array[i], array[high]) = (array[high], array[i])
+ 
+    # Return the position from where partition is done
+    return i
+ 
+ 
+# Function to perform quicksort
+def quicksort(array, low, high):
+    if low < high:
+ 
+        # Find pivot element such that
+        # element smaller than pivot are on the left
+        # element greater than pivot are on the right
+        pi = partition(array, low, high)
+ 
+        # Recursive call on the left of pivot
+        quicksort(array, low, pi - 1)
+ 
+        # Recursive call on the right of pivot
+        quicksort(array, pi + 1, high)
+ 
 ```
 
 
